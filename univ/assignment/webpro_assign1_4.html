@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>assignment1_4</title>
+</head>
+<body>
+    <h2>본사위치</h2>
+    <iframe id="map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br/>
+    <a id="bigmaplink" target="_blank">새 창에 큰 지도 보기</a>
+    <a id="bigmaplink2" target="_blank">본인 위치 지도로 보기</a>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success);
+        } else {
+            alert("지원하지 않음");
+        }
+
+        function success(position) {
+            let lat = 37.69819;
+            let lon = 126.76668;
+            let map = document.getElementById("map");
+
+            let lat2 = position.coords.latitude; // 현재 위치의 위도
+            let lon2 = position.coords.longitude; // 현재 위치의 경도
+            let maplink = document.getElementById("bigmaplink");
+            let maplink2 = document.getElementById("bigmaplink2");
+            let zoom = 15; 
+
+            map.src = "https://www.openstreetmap.org/export/embed.html?bbox=" +
+                (parseFloat(lon) - 0.01) + "%2C" + (parseFloat(lat) - 0.01) + "%2C" +
+                (parseFloat(lon) + 0.01) + "%2C" + (parseFloat(lat) + 0.01);
+
+            maplink.href = "https://www.openstreetmap.org/#map=" + zoom + "/" + lat + "/" + lon;
+
+            maplink2.href = "https://www.openstreetmap.org/#map=" + zoom + "/" + lat2 + "/" + lon2;
+        }
+    </script>
+</body>
+</html>
