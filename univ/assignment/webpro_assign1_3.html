@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>assignment1_3</title>
+    </head>
+    <body>
+        <script>
+            document.write("Up and Down Game1~100<br>");
+            var result = Math.random();
+            result = Math.floor(result*100)+1;
+            document.write(result);
+            var input = 0;
+            var cnt = 0;
+            while(input != result){
+                input = prompt("1~100까지 숫자중 아무거나 입력해주세요");
+                if (input == result){
+                    document.write("는 정답숫자입니다. <br>얼마나 시도하셨는지는 ")
+                    cnt += 1;
+                    document.write(cnt);
+                    document.write("회 입니다");
+                    break;
+                }
+                else if (input > result){
+                    alert("Down");
+                }
+                else{
+                    alert("Up");
+                }
+                cnt += 1;
+            }
+
+        </script>
+    </body>
+</html>
